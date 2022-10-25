@@ -5,12 +5,11 @@ import sources.Menu.Menu;
 
 import java.util.Scanner;
 
-public class Administrator {
+public class Administrator extends Client{
 
      public void administratorWork() {
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
-        Client client = new Client();
         CreateOrder order = new CreateOrder();
         System.out.println("""
                 Меню управления администратора.
@@ -28,9 +27,10 @@ public class Administrator {
                 order.printOrder();
             }
             case 3 -> {
-                approvePayment(client.payment(order.getPrices()));
+                approvePayment(payment(order.getPrices(), getPrice()));
             }
             case 4 -> {
+                break;
             }
         }
     }

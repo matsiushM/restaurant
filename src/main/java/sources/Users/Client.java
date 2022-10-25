@@ -7,9 +7,15 @@ import java.util.Scanner;
 
 public class Client {
 
+    public static int getPrice() {
+        return price;
+    }
+
+    private static  int price = 0;
     public void ClientWork() {
         Scanner scanner = new Scanner(System.in);
         CreateOrder order = new CreateOrder();
+
         Menu menu = new Menu();
         System.out.println("""
                 Меню управления администратора.
@@ -29,15 +35,15 @@ public class Client {
             }
             case 3 -> {
                 System.out.println(order.getPrices());
-                payment(order.getPrices());
+                System.out.println("Ввудите сумму оплаты: ");
+                price = scanner.nextInt();
+                payment(order.getPrices(),price);
             }
         }
     }
 
-    public boolean payment(int account){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ввудите сумму оплаты: ");
-        int price = scanner.nextInt();
+    public static boolean payment(int account,int price){
+
         if (price == account){
             System.out.println("Платёж одобрен.");
             return true;
